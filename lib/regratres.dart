@@ -20,7 +20,11 @@ class _RegraTresState extends State<RegraTres> {
     double numero3 = double.tryParse(_numero3Controller.text) ?? 0.0;
 
     setState(() {
-      _resultado = "X = " + ((numero2 * numero3) / numero1).toString();
+      if (numero1 == 0.0) {
+        _resultado = "O Número 1 não pode ser zero";
+      } else {
+        _resultado = "X = " + ((numero2 * numero3) / numero1).toStringAsFixed(2).toString();
+      }
     });
   }
 
@@ -48,7 +52,7 @@ class _RegraTresState extends State<RegraTres> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text("está para", style: TextStyle(fontSize: 20),),
+              child: Text("está para", style: TextStyle(fontSize: 20)),
             ),
             SizedBox(
               width: 120,
@@ -69,7 +73,7 @@ class _RegraTresState extends State<RegraTres> {
         SizedBox(height: 70),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("assim como", style: TextStyle(fontSize: 20),), ],
+          children: [Text("assim como", style: TextStyle(fontSize: 20))],
         ),
         SizedBox(height: 70),
         Row(
@@ -91,7 +95,7 @@ class _RegraTresState extends State<RegraTres> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text("está para", style: TextStyle(fontSize: 20),),
+              child: Text("está para", style: TextStyle(fontSize: 20)),
             ),
             SizedBox(
               width: 120,
@@ -111,7 +115,10 @@ class _RegraTresState extends State<RegraTres> {
               onPressed: () {
                 _calcular();
               },
-              child: Text("Calcular", style: TextStyle(fontSize: 25, color: Colors.red),),
+              child: Text(
+                "Calcular",
+                style: TextStyle(fontSize: 25, color: Colors.red),
+              ),
             ),
           ],
         ),
